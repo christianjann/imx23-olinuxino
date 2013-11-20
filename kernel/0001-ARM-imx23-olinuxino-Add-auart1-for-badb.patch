@@ -1,0 +1,53 @@
+From b0b1234ac93df20df43a9ddc4c431e15a1549238 Mon Sep 17 00:00:00 2001
+From: Christian Jann <christian.jann@ymail.com>
+Date: Wed, 20 Nov 2013 11:15:05 +0100
+Subject: [PATCH] ARM: imx23-olinuxino: Add auart1 for badb
+
+Add auart1 for the Bones iMX233 Audio Development Board
+---
+ arch/arm/boot/dts/imx23-olinuxino.dts |  6 ++++++
+ arch/arm/boot/dts/imx23.dtsi          | 11 +++++++++++
+ 2 files changed, 17 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx23-olinuxino.dts b/arch/arm/boot/dts/imx23-olinuxino.dts
+index fc766ae..182fa74 100644
+--- a/arch/arm/boot/dts/imx23-olinuxino.dts
++++ b/arch/arm/boot/dts/imx23-olinuxino.dts
+@@ -85,6 +85,12 @@
+ 				status = "okay";
+ 			};
+ 
++			auart1: serial@8006e000 {
++				pinctrl-names = "default";
++				pinctrl-0 = <&auart1_2pins_a>;
++				status = "okay";
++			};
++
+ 			usbphy0: usbphy@8007c000 {
+ 				status = "okay";
+ 			};
+diff --git a/arch/arm/boot/dts/imx23.dtsi b/arch/arm/boot/dts/imx23.dtsi
+index 28b5ce2..8136057 100644
+--- a/arch/arm/boot/dts/imx23.dtsi
++++ b/arch/arm/boot/dts/imx23.dtsi
+@@ -169,6 +169,17 @@
+ 					fsl,pull-up = <0>;
+ 				};
+ 
++				auart1_2pins_a: auart1-2pins@0 {
++					reg = <0>;
++					  fsl,pinmux-ids = <
++					    0x00e1 /* MX23_PAD_GPMI_D14__AUART2_TX */
++					    0x00f1 /* MX23_PAD_GPMI_D15__AUART2_RX */
++					>;
++					fsl,drive-strength = <0>;
++					fsl,voltage = <1>;
++					fsl,pull-up = <0>;
++				};
++
+ 				gpmi_pins_a: gpmi-nand@0 {
+ 					reg = <0>;
+ 					fsl,pinmux-ids = <
+-- 
+1.8.3.1
+
