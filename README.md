@@ -180,6 +180,16 @@ $: sudo dd if=sd_mmc_bootstream.raw of=/dev/mmcblk0p1
 ```
 Card is ready.
 
+Partition layout:
+```
+[++-------------------------/dev/mmcblk0-----------------------------------]
+###[+/dev/mmcblk0p1-][+------/dev/mmcblk0p2---------][+---/dev/mmcblk0p3---]
+###[+-----kernel----][+----------rootfs-------------][+-------swap---------]
+
+###, +: partition table and other filesystem information
+-: free space
+```
+
 It is good practice to work with multiple consoles. Open one into directory linux-mainline,
 second into imx-bootlets-src-10.05.02 and third console for minicom to monitor olinuxino.
 
