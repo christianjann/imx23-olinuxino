@@ -1,3 +1,4 @@
 *.note
 boot/imx-bootlets-src*
 kernel/linux-stable
+kernel/*.tar.bz2
