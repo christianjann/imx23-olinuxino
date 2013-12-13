@@ -22,7 +22,7 @@ Modifications to the root file system
   Password: root
   ```
 
-- Installed wireless tools: http://www.jann.cc/2013/02/04/2013/12/01/arch_linux_arm_network_tools_missing.html
+- Installed wireless tools: http://www.jann.cc/2013/11/30/arch_linux_arm_network_tools_missing.html
 - Installed updates: pacman -Syu, http://www.jann.cc/2013/02/04/a_new_image_for_the_imx233_olinuxino.html
 - Installed tools: pacman -Sy usb_modeswitch wvdial base-devel vim screen git watchdog fswebcam python2 python2-pip i2c-tools
 
