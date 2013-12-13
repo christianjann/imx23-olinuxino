@@ -78,8 +78,9 @@ $: patch -p1 < ../0004-ARM-bones-badb-Add-the-main-SD-card.patch
 ```
 
 Or checkout the development snapshot:
+```
 $: git clone -b badb-3.12 https://github.com/christianjann/linux-badb linux-stable
-
+```
 
 Configure the kernel
 ---
