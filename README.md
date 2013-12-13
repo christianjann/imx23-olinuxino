@@ -67,18 +67,26 @@ $: wget http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.12.tar.bz2
 $: tar xvjf linux-3.12.tar.bz2
 $: mv linux-3.12 linux-stable
 ```
+
 The new directory linux-stable contains the kernel sources. Switch to the directory linux-stable to apply patches.
 ```
 $: cd linux-stable
-$: patch -p1 < ../0001-ARM-imx23-olinuxino-Add-auart1-for-badb.patch
+$: patch -p1 < ../0001-ARM-bones-badb-Add-auart1.patch
+$: patch -p1 < ../0002-ARM-imx23-olinuxino-Add-i2c-support.patch
+$: patch -p1 < ../0003-ARM-bones-badb-Enable-chip-detect-and-use-pull-up.patch
+$: patch -p1 < ../0004-ARM-bones-badb-Add-the-main-SD-card.patch
 ```
+
+Or checkout the development snapshot:
+$: git clone -b badb-3.12 https://github.com/christianjann/linux-badb linux-stable
+
 
 Configure the kernel
 ---
 Start from the supplied default mxs_defconfig configuration:
 ```
 $: make ARCH=arm CROSS_COMPILE=arm-none-eabi- mxs_defconfig
-$: #cp ../dotconfig .config # maybe use a premade kernel configuration
+$: cp ../dotconfig .config # maybe use my premade kernel configuration
 $: make ARCH=arm CROSS_COMPILE=arm-none-eabi- menuconfig
 ```
 Select `Boot options --->` and select the following options:

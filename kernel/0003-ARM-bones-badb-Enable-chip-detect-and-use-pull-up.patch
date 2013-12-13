@@ -1,0 +1,32 @@
+From 7eb27000f73ed06854a62470b86a7ebfd6fd890e Mon Sep 17 00:00:00 2001
+From: Christian Jann <christian.jann@ymail.com>
+Date: Fri, 13 Dec 2013 15:45:52 +0100
+Subject: [PATCH 3/4] ARM: bones-badb: Enable chip detect and use pull-up
+
+- broken-cd removed to use MX23_PAD_SSP1_DETECT__SSP1_DETECT
+* on the bones-badb chip detect is actually connected
+* this differs from the imx23-olinuxino
+
+- fsl,pull-up = <1>;
+* the schematic for the SD card says "Must enable internal Pull-Up at
+    GPIO of CPU"
+---
+ arch/arm/boot/dts/imx23-olinuxino.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/imx23-olinuxino.dts b/arch/arm/boot/dts/imx23-olinuxino.dts
+index c66cc4f..217fa1a 100644
+--- a/arch/arm/boot/dts/imx23-olinuxino.dts
++++ b/arch/arm/boot/dts/imx23-olinuxino.dts
+@@ -29,7 +29,7 @@
+ 				pinctrl-names = "default";
+ 				pinctrl-0 = <&mmc0_4bit_pins_a &mmc0_pins_fixup>;
+ 				bus-width = <4>;
+-				broken-cd;
++				fsl,pull-up = <1>;
+ 				status = "okay";
+ 			};
+ 
+-- 
+1.8.3.1
+

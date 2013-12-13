@@ -1,0 +1,61 @@
+From c8d2c8be985ef3336f16bfe1be232949897f8872 Mon Sep 17 00:00:00 2001
+From: Christian Jann <christian.jann@ymail.com>
+Date: Fri, 13 Dec 2013 15:48:06 +0100
+Subject: [PATCH 4/4] ARM: bones-badb: Add the main SD card
+
+- added pinmux-ids
+- but still the second SD isn't detected
+---
+ arch/arm/boot/dts/imx23-olinuxino.dts |  8 ++++++++
+ arch/arm/boot/dts/imx23.dtsi          | 16 ++++++++++++++++
+ 2 files changed, 24 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx23-olinuxino.dts b/arch/arm/boot/dts/imx23-olinuxino.dts
+index 217fa1a..e91e287 100644
+--- a/arch/arm/boot/dts/imx23-olinuxino.dts
++++ b/arch/arm/boot/dts/imx23-olinuxino.dts
+@@ -32,6 +32,14 @@
+ 				fsl,pull-up = <1>;
+ 				status = "okay";
+ 			};
++			
++			ssp1: ssp@80034000 {
++				compatible = "fsl,imx23-mmc";
++				pinctrl-names = "default";
++				pinctrl-0 = <&mmc1_4bit_pins_a>;
++				bus-width = <4>;
++				status = "okay";
++			};
+ 
+ 			pinctrl@80018000 {
+ 				pinctrl-names = "default";
+diff --git a/arch/arm/boot/dts/imx23.dtsi b/arch/arm/boot/dts/imx23.dtsi
+index 8571993..d87c813 100644
+--- a/arch/arm/boot/dts/imx23.dtsi
++++ b/arch/arm/boot/dts/imx23.dtsi
+@@ -257,6 +257,22 @@
+ 					>;
+ 					fsl,pull-up = <0>;
+ 				};
++				
++				mmc1_4bit_pins_a: mmc1-4bit@0 {
++					reg = <0>;
++					fsl,pinmux-ids = <
++						0x0002 /* MX23_PAD_SSP2_DATA0__SSP2_DATA0 */
++						0x0012 /* MX23_PAD_SSP2_DATA1__SSP2_DATA1 */
++						0x0022 /* MX23_PAD_SSP2_DATA2__SSP2_DATA2 */
++						0x0032 /* MX23_PAD_SSP2_DATA3__SSP2_DATA3 */
++						0x0142 /* MX23_PAD_SSP2_CMD__SSP2_CMD */
++						0x0182 /* MX23_PAD_SSP2_SCK__SSP2_SCK */
++						0x0132 /* MX23_PAD_SSP2_DETECT__SSP2_DETECT */
++					>;
++					fsl,drive-strength = <1>;
++					fsl,voltage = <1>;
++					fsl,pull-up = <1>;
++				};
+ 
+ 				pwm2_pins_a: pwm2@0 {
+ 					reg = <0>;
+-- 
+1.8.3.1
+
