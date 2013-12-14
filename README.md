@@ -75,6 +75,7 @@ $: patch -p1 < ../0001-ARM-bones-badb-Add-auart1.patch
 $: patch -p1 < ../0002-ARM-imx23-olinuxino-Add-i2c-support.patch
 $: patch -p1 < ../0003-ARM-bones-badb-Enable-chip-detect-and-use-pull-up.patch
 $: patch -p1 < ../0004-ARM-bones-badb-Add-the-main-SD-card.patch
+$: patch -p1 < ../0005-ARM-bones-badb-Make-the-status-led-work.patch
 ```
 
 Or checkout the development snapshot:

@@ -1,0 +1,43 @@
+From 8a6f27ad747801a5171d8d36595aa7cc6b8daacd Mon Sep 17 00:00:00 2001
+From: Christian Jann <christian.jann@ymail.com>
+Date: Sat, 14 Dec 2013 16:02:46 +0100
+Subject: [PATCH] ARM: bones-badb: Make the status led work
+
+---
+ arch/arm/boot/dts/imx23-olinuxino.dts | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/imx23-olinuxino.dts b/arch/arm/boot/dts/imx23-olinuxino.dts
+index e91e287..759356a 100644
+--- a/arch/arm/boot/dts/imx23-olinuxino.dts
++++ b/arch/arm/boot/dts/imx23-olinuxino.dts
+@@ -55,10 +55,10 @@
+ 					fsl,pull-up = <0>;
+ 				};
+ 
+-				led_pin_gpio2_1: led_gpio2_1@0 {
++				led_pin_gpio1_21: led_gpio1_21@0 {
+ 					reg = <0>;
+ 					fsl,pinmux-ids = <
+-						0x2013 /* MX23_PAD_SSP1_DETECT__GPIO_2_1 */
++						0x1153 /* MX23_PAD_LCD_CS__GPIO_1_21 */
+ 					>;
+ 					fsl,drive-strength = <0>;
+ 					fsl,voltage = <1>;
+@@ -135,11 +135,11 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&led_pin_gpio2_1>;
++		pinctrl-0 = <&led_pin_gpio1_21>;
+ 
+ 		user {
+ 			label = "green";
+-			gpios = <&gpio2 1 1>;
++			gpios = <&gpio1 21 1>;
+ 		};
+ 	};
+ };
+-- 
+1.8.3.1
+
